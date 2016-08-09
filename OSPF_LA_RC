@@ -1,0 +1,121 @@
+
+!
+! Last configuration change at 10:49:38 UTC Sat Aug 6 2016
+version 15.1
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname CORP
+!
+boot-start-marker
+boot-end-marker
+!
+!
+enable secret 5 $1$FlKY$BDFxBK6/mw70l3kUfFOE00
+!
+no aaa new-model
+!
+!
+dot11 syslog
+ip source-route
+!
+!
+ip cef
+!
+!
+!
+no ip domain lookup
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+voice-card 0
+!
+crypto pki token default removal timeout 0
+!
+!
+!
+!
+license udi pid CISCO2811 sn FTX1027A0TS
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/0
+ description CORP_LAN
+ ip address 10.10.10.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/1
+ description Outside Link
+ ip address 192.168.1.253 255.255.255.0
+ duplex full
+ speed 100
+!
+interface Serial0/0/0
+ description SF Backbone
+ ip address 172.16.10.1 255.255.255.0
+!
+interface Serial0/1/0
+ description LA Backbone
+ ip address 172.16.10.5 255.255.255.0
+!
+ip forward-protocol nd
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+!
+!
+!
+control-plane
+!
+!
+!
+!
+mgcp profile default
+!
+!
+!
+!
+!
+banner motd  This is the CORP router 
+!
+line con 0
+ logging synchronous
+line aux 0
+line vty 0 4
+ password telnet
+ login
+ transport input all
+line vty 5 180
+ password telnet
+ login
+ transport input all
+!
+scheduler allocate 20000 1000
+end
