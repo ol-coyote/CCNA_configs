@@ -6,9 +6,9 @@ service timestamps debug uptime
 service timestamps log uptime
 no service password-encryption
 !
-hostname S2
+hostname S3
 !
-enable secret 5 $1$vYQo$5PVLtf6985r.IJX3o/Opb1
+enable secret 5 $1$Mpvn$LuofFvF.yxeS8a5qjJEpI.
 !
 ip subnet-zero
 !
@@ -33,10 +33,10 @@ interface FastEthernet0/3
 interface FastEthernet0/4
 !
 interface FastEthernet0/5
- description 1st connection to S3
+ description 1st connection to S2
 !
 interface FastEthernet0/6
- description 2nd connection to S3
+ description 2nd connection to S2
 !
 interface FastEthernet0/7
 !
@@ -55,11 +55,12 @@ interface GigabitEthernet0/1
 interface GigabitEthernet0/2
 !
 interface Vlan1
- ip address 192.168.10.18 255.255.255.240
+ ip address 192.168.10.19 255.255.255.240
  no ip route-cache
 !
 ip http server
-banner motd  This is the S2 switch 
+banner motd  This is the S3 switch
+
 !
 line con 0
  password console
